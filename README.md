@@ -25,7 +25,7 @@ A starter project for the Week 6 “Build Your Own” MCP file-server connector 
 Open a terminal in the project directory and install the dependencies:
 
 ```bash
-npm install
+npm ci
 ```
 
 Make a local copy of the environment template.
@@ -210,6 +210,8 @@ The HTTPS tunnel is a separate process and must remain active too. For a five-mi
 - [Testing and verification](docs/TESTING.md)
 - [Demo transcript](docs/DEMO_TRANSCRIPT.md), generated after a successful live demo
 - Project state and handoff notes are stored under `workspace/`.
+- [MIT License](LICENSE)
+- GitHub Actions runs the Node.js test suite on pushes and pull requests.
 
 ## Security notes
 
