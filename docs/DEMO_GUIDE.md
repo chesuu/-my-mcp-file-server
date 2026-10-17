@@ -10,7 +10,7 @@ Run `npm ci`, copy `.env.example` to `.env`, set a strong `MCP_AUTH_TOKEN`, then
 Open MCP Inspector, choose Streamable HTTP, and connect to `http://127.0.0.1:3000/mcp`. Configure the required Authorization header if the Inspector version supports custom headers, then call `list_files` and `read_file`.
 
 ## 2:15–3:30 — Show the handoff
-Run `npm run demo`. Explain that Session 1 writes handoff notes, disconnects, and Session 2 reconnects and reads them. The transcript file is only evidence after a successful live run.
+Run `npm run demo`. Explain that Session 1 creates and reads a workspace demo note, disconnects, and Session 2 reconnects to search the workspace and check Git status. The transcript file is only evidence after a successful live run.
 
 ## 3:30–4:15 — Show security checks
 Demonstrate that an absolute path or traversal path is rejected. Explain overwrite and delete confirmation flags.
