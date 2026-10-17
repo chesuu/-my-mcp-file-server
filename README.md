@@ -1,6 +1,6 @@
 # Student MCP File-Server Connector
 
-A starter project for the Week 6 “Build Your Own” MCP file-server connector assignment. It provides file-management tools through MCP Streamable HTTP, protects HTTP requests with a Bearer token, includes lightweight Git tools, and saves handoff notes so a later client session can pick up where an earlier one stopped.
+A starter project for the Week 6 “Build Your Own” MCP file-server connector assignment. It provides file-management tools through MCP Streamable HTTP, protects HTTP requests with a Bearer token, includes lightweight Git tools, and demonstrates saved notes between separate client sessions.
 
 ## Features
 
@@ -8,7 +8,7 @@ A starter project for the Week 6 “Build Your Own” MCP file-server connector 
 - **Workspace isolation:** Blocks absolute paths and attempts to leave the workspace with `..` paths. Checks symlinks and hard-linked files to reduce the chance of accessing files outside the sandbox.
 - **Guarded file changes:** Replacing an existing file requires `overwrite=true`. Text replacement must identify exactly one match, and deleting a file requires `confirm=true`. Directory deletion is not supported.
 - **Protected HTTP endpoint:** Uses Bearer-token authentication, a Host allowlist, a maximum JSON request size, and a basic health-check route.
-- **Two-session handoff demo:** A demo script creates two separate MCP client connections. The first session inspects the task and saves notes. The second session loads those notes, implements a feature and test, then reviews Git status and the diff.
+- **Two-session handoff demo:** The demo script creates two separate MCP client connections, creates and reads a workspace note, searches files, and checks Git status and the diff.
 - **Saved project state:** Includes `workspace/PROJECT_STATE.md`, `workspace/PLAN_LOG.md`, `workspace/CHECKPOINTS.md`, and `workspace/DECISIONS.md`.
 - **Submission materials:** Includes a short project report and a guide for a five-minute demonstration.
 
@@ -102,7 +102,7 @@ Add this request header:
 - **Header:** `Authorization`
 - **Value:** `Bearer <your MCP_AUTH_TOKEN>`
 
-Use the token value saved in your local `.env` file. Try `list_files`, read `src/task-utils.js`, and search for `getOpenTasks`.
+Use the token value saved in your local `.env` file. Try `list_files`, `read_file`, and `search_files`.
 
 ## 3. Demonstrate the two-session handoff
 
@@ -112,13 +112,13 @@ Leave the server running in Terminal 1, then run the demo in Terminal 2:
 npm run demo
 ```
 
-The script sends MCP requests to the running HTTP endpoint. Client Session 1 inspects the workspace and writes handoff notes, then disconnects. Client Session 2 connects separately, reads those notes, adds `getOverdueTasks()` and a related test, runs the workspace tests, and checks Git status and the diff.
+The script sends MCP requests to the running HTTP endpoint. Client Session 1 lists the workspace, writes a demo note, and reads it back. Client Session 2 connects separately, searches for the note's text, and checks Git status and the diff.
 
 After the demo, `docs/DEMO_TRANSCRIPT.md` is generated with the actual tool calls and responses from that run.
 
 The two connections show that saved project state can be reused across separate MCP client sessions. If the assignment specifically requires two separate AI-agent conversations, repeat the handoff using two instructor-approved AI-client conversations as well.
 
-The demo changes files in the sample workspace and updates the handoff notes. To start over, restore the original sample files from the project ZIP or back up `workspace/` before running the demo.
+The demo writes `DEMO_NOTE.md` inside the sample workspace. Back up `workspace/` before running the demo if you want to preserve its original contents.
 
 ## 4. Expose the endpoint over HTTPS
 
@@ -159,7 +159,7 @@ npm install -g pm2
 Start and inspect the server:
 
 ```bash
-pm2 start ecosystem.config.cjs
+pm2 start server.js --name student-mcp-file-server
 pm2 status
 pm2 logs student-mcp-file-server
 ```
@@ -209,7 +209,7 @@ The HTTPS tunnel is a separate process and must remain active too. For a five-mi
 - [Architecture overview](docs/ARCHITECTURE.md)
 - [Testing and verification](docs/TESTING.md)
 - [Demo transcript](docs/DEMO_TRANSCRIPT.md), generated after a successful live demo
-- Project state and handoff notes are stored under `workspace/`.
+- The sandbox and any handoff notes are stored under `workspace/`.
 - [MIT License](LICENSE)
 - GitHub Actions runs the Node.js test suite on pushes and pull requests.
 
