@@ -196,7 +196,6 @@ The HTTPS tunnel is a separate process and must remain active too. For a five-mi
 ├── demo.js                  Two-session handoff demo
 ├── test.js                  Automated workspace safety tests
 ├── docs/                    Report, architecture, testing, demo guide, transcript
-├── workspace/               Sandbox and persistent handoff notes
 └── workspace/               Sandbox and saved notes
 ```
 
