@@ -1,11 +1,10 @@
 # Architecture
 
-- `server.js` starts the Express HTTP server and configures MCP Streamable HTTP.
-- `lib/` contains the workspace path helpers and MCP tool registration.
-- `src/` contains task utilities.
-- `scripts/` contains the demonstration client.
-- `test/` contains automated tests.
-- `docs/` contains the report, demo instructions, architecture notes, and transcript.
-- `workspace/` contains example project state and handoff notes.
+- `server.js` contains the workspace safety functions, all eight MCP tool registrations, HTTP authentication, and the Streamable HTTP server.
+- `demo.js` runs two separate MCP client sessions and writes a real transcript after a successful run.
+- `test.js` contains the automated workspace safety tests.
+- `package.json` defines the project scripts and dependencies.
+- `docs/` contains the project report, architecture notes, testing guide, demo guide, and transcript.
+- `workspace/` is the sandbox used by the server and contains example handoff notes.
 
-Requests are checked by the HTTP middleware before MCP tools run. File operations are restricted to the configured workspace. See `PROJECT_REPORT.md` for the design summary.
+Requests pass through the HTTP middleware before MCP tools run. File operations are restricted to the configured workspace. The code is intentionally consolidated into three JavaScript files to keep the project easy to review.
