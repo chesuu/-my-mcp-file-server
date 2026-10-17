@@ -1,0 +1,21 @@
+{
+  "name": "student-mcp-file-server-connector",
+  "version": "1.0.0",
+  "description": "A sandboxed MCP file-server connector for a Week 6 project.",
+  "type": "module",
+  "private": false,
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test",
+    "demo": "node scripts/demo-client.js",
+    "git:init": "git -C workspace init",
+    "inspector": "npx @modelcontextprotocol/inspector"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.0",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "zod": "^3.25.0"
+  }
+}
