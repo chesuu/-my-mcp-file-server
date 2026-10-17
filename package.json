@@ -4,11 +4,13 @@
   "description": "A sandboxed MCP file-server connector for a Week 6 project.",
   "type": "module",
   "private": false,
-  "engines": { "node": ">=20" },
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "start": "node server.js",
-    "test": "node --test",
-    "demo": "node scripts/demo-client.js",
+    "test": "node --test test.js",
+    "demo": "node demo.js",
     "git:init": "git -C workspace init",
     "inspector": "npx @modelcontextprotocol/inspector"
   },
