@@ -193,13 +193,11 @@ The HTTPS tunnel is a separate process and must remain active too. For a five-mi
 ├── package.json             Scripts and dependencies
 ├── package-lock.json        Dependency lockfile
 ├── .env.example             Local configuration template
-├── lib/                     Workspace helpers and MCP tool registration
-├── src/                     Task utility example
-├── scripts/                 Two-client handoff demo
-├── test/                    Automated tests
+├── demo.js                  Two-session handoff demo
+├── test.js                  Automated workspace safety tests
 ├── docs/                    Report, architecture, testing, demo guide, transcript
 ├── workspace/               Sandbox and persistent handoff notes
-└── ecosystem.config.cjs     Optional PM2 configuration
+└── workspace/               Sandbox and saved notes
 ```
 
 ## Documentation
